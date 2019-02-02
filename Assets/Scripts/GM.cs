@@ -13,7 +13,12 @@ public class GM : MonoBehaviour
 {
     public static GM instance { get; private set; }
 
+    public static int MENU_SCENE { get; private set; } = 0;
+    public static int CONTROLS_SCENE { get; private set; } = 1;
+    public static int INIT_GAME_SCENE { get; private set; } = 2;
+
     public AudioSource levelBgMusic;
+
 
     public int currentLevel { get; private set; } = 0;
     public CameraShake cameraShake { get; private set; }
@@ -35,15 +40,28 @@ public class GM : MonoBehaviour
 
     void GoToNextLevel(){
         currentLevel ++;
-        var levelSceneNum = Menu.INIT_GAME_SCENE + currentLevel;
+        var levelSceneNum = INIT_GAME_SCENE + currentLevel;
         if(levelSceneNum < SceneManager.sceneCount){
             SceneManager.LoadScene(levelSceneNum, LoadSceneMode.Single);
         }
     }
 
-    public void GoToMenu(){
-        SceneManager.LoadScene(Menu.MENU_SCENE, LoadSceneMode.Single);
+    public void RestartGame(){
+        SceneManager.LoadScene(INIT_GAME_SCENE, LoadSceneMode.Single);
     }
+
+    public void GoToMenu(){
+        SceneManager.LoadScene(MENU_SCENE, LoadSceneMode.Single);
+    }
+
+    public void GoToControls(){
+        SceneManager.LoadScene(CONTROLS_SCENE, LoadSceneMode.Single);
+    }
+
+    public void ExitGame(){
+        Application.Quit();
+    }
+
 
     public void TogglePause(){
         paused = !paused;
