@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 {
 
     TopDownMovement2D mover;
-
-    // Start is called before the first frame update
+    Animator animator;
+    Vector3 localScale;
     void Start()
     {
         mover = GetComponent<TopDownMovement2D>();    
+        animator = GetComponent<Animator>();
+        localScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -22,7 +24,17 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         mover.Move(new Vector2(horizontal, vertical));
+
+        if(horizontal < 0){
+            var scale = localScale;
+            scale.x = localScale.x * -1;
+            transform.localScale = scale;
+        }else {
+            transform.localScale = localScale;
+        }
         
+        animator.SetBool("moving", horizontal != 0 || vertical != 0);
+
         // pause and unpause
         if(Input.GetKeyDown(KeyCode.P)){
             GM.instance.TogglePause();
