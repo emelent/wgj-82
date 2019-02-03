@@ -7,14 +7,18 @@ using BasicMotion;
 public class Player : MonoBehaviour
 {
 
+    public SpriteRenderer spriteRenderer;
+    public Remote remote;
     TopDownMovement2D mover;
     Animator animator;
-    Vector3 localScale;
+    
+    
+    float scaleX;
     void Start()
     {
         mover = GetComponent<TopDownMovement2D>();    
         animator = GetComponent<Animator>();
-        localScale = transform.localScale;
+        scaleX = spriteRenderer.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -23,21 +27,27 @@ public class Player : MonoBehaviour
         // basic motion
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        mover.Move(new Vector2(horizontal, vertical));
+        var motion = new Vector2(horizontal, vertical);
+        mover.Move(motion);
 
+        // face player towards motion
+        var localScale = spriteRenderer.transform.localScale;
         if(horizontal < 0){
-            var scale = localScale;
-            scale.x = localScale.x * -1;
-            transform.localScale = scale;
-        }else {
-            transform.localScale = localScale;
+            localScale.x = scaleX * -1;
+        }else if(horizontal > 0){
+            localScale.x = scaleX;
         }
-        
-        animator.SetBool("moving", horizontal != 0 || vertical != 0);
+        spriteRenderer.transform.localScale = localScale;
+
+        animator.SetBool("moving", motion != Vector2.zero);
 
         // pause and unpause
         if(Input.GetKeyDown(KeyCode.P)){
             GM.instance.TogglePause();
+        }
+
+        if(Input.GetMouseButtonDown(0)){
+            remote.PressPause();
         }
     }
 }

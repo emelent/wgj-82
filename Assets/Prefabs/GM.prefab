@@ -58,7 +58,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566d4e4fe16b2471aa0e5aa182ebf205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: ChannelChange
+    clip: {fileID: 8300000, guid: b8934716b4d4245bcbb57e03053d5501, type: 3}
+    volume: 0.451
+    pitch: 1
+    randomVolume: 0.361
+    randomPitch: 0.369
+  - name: RemoteClick
+    clip: {fileID: 8300000, guid: 268737441f3444d698995294beea633f, type: 3}
+    volume: 0.039
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.42
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    randomVolume: 0
+    randomPitch: 0
 --- !u!114 &6416603877100226691
 MonoBehaviour:
   m_ObjectHideFlags: 0
