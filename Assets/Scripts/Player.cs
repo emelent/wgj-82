@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
     public Remote remote;
     TopDownMovement2D mover;
     Animator animator;
-    
+    bool isMoving = false;
     
     float scaleX;
+    public float footstepDelay = 0.3f;
+    float footStepTime = 0f;
     void Start()
     {
         mover = GetComponent<TopDownMovement2D>();    
@@ -39,8 +41,9 @@ public class Player : MonoBehaviour
         }
         spriteRenderer.transform.localScale = localScale;
 
-        animator.SetBool("moving", motion != Vector2.zero);
-
+        isMoving = motion != Vector2.zero;
+        animator.SetBool("moving", isMoving);
+        
         // pause and unpause
         if(Input.GetKeyDown(KeyCode.P)){
             GM.instance.TogglePause();
@@ -48,6 +51,11 @@ public class Player : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0)){
             remote.PressPause();
+        }
+        float t = Time.time;
+        if(isMoving && t - footStepTime > footstepDelay){
+            GM.instance.audioManager.PlaySound("Step");
+            footStepTime = t;
         }
     }
 }
