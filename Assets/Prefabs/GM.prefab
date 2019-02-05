@@ -71,30 +71,30 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.42
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
+  - name: Step
+    clip: {fileID: 8300000, guid: baa0c00b027fa4c298aa4d72d8bebdf1, type: 3}
+    volume: 0.301
+    pitch: 1
+    randomVolume: 0.197
+    randomPitch: 0.5
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: 9ca8b4faeddb74d4c8c5b2207275c190, type: 3}
+    volume: 0.263
+    pitch: 1
+    randomVolume: 0.089
+    randomPitch: 0.49
+  - name: Jump
+    clip: {fileID: 8300000, guid: d45f23cd04b1247a2b55dc92e74e1c06, type: 3}
+    volume: 0.359
+    pitch: 1.085
+    randomVolume: 0.099
+    randomPitch: 0.086
+  - name: Collect
+    clip: {fileID: 8300000, guid: 5192dbd7c41064d2ea14affb31865d55, type: 3}
+    volume: 0.221
+    pitch: 0.926
+    randomVolume: 0.126
+    randomPitch: 0.482
   - name: 
     clip: {fileID: 0}
     volume: 0

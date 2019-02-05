@@ -9,7 +9,7 @@ namespace BasicMotion
 
 		[Header("Platformer Movement")]
 		public bool  allowMovement = true;
-		public float movementSpeed = 100f;
+		public float movementSpeed = 200f;
 
 		public Vector2 motion { get; protected set; } = Vector2.zero;
 

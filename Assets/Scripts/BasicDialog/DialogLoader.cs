@@ -24,14 +24,15 @@ namespace BasicDialog{
         }
         
         public List<Dialog> LoadDialog(string characterName){
-            if(characterDialogs.ContainsKey(characterName)){
-                return characterDialogs[characterName];
-            }
-            Debug.Log("Loading dialogs");
-            TextAsset json = (TextAsset) AssetDatabase.LoadAssetAtPath("Assets/Data/" + characterName + ".json", typeof(TextAsset));
-            List<Dialog> dialogs = JsonConvert.DeserializeObject<List<Dialog>>(json.ToString());
-            characterDialogs[characterName] = dialogs;
-            return dialogs;
+            return null;
+            // if(characterDialogs.ContainsKey(characterName)){
+            //     return characterDialogs[characterName];
+            // }
+            // Debug.Log("Loading dialogs");
+            // TextAsset json = (TextAsset) AssetDatabase.LoadAssetAtPath("Assets/Data/" + characterName + ".json", typeof(TextAsset));
+            // List<Dialog> dialogs = JsonConvert.DeserializeObject<List<Dialog>>(json.ToString());
+            // characterDialogs[characterName] = dialogs;
+            // return dialogs;
         }
     }
 

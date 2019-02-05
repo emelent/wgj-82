@@ -5,9 +5,11 @@ using UnityEngine;
 public class Remote : MonoBehaviour
 {
 
-    public float rotationOffset = 90f;
+    public float rotationOffset = 0f;
     public RemoteReceiver receiver;
     Animator animator;
+
+    public float angle { get; protected set; }
 
     void Start() {
         animator = GetComponent<Animator>();    
@@ -17,7 +19,8 @@ public class Remote : MonoBehaviour
 		diff.Normalize();
 
 		float  rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);	
+        angle = rotZ + rotationOffset;
+		transform.rotation = Quaternion.Euler(0f, 0f, angle);	
 	}
 
     protected void remoteClick(){
