@@ -8,27 +8,30 @@ public class Player : MonoBehaviour
 {
 
     public SpriteRenderer spriteRenderer;
+    public GameObject attractedIndicator;
     public Remote remote;
     
     public float footstepDelay = 0.3f;
     float footStepTime = 0f;
 
     public bool isJumping { get; private set; } = false;
-
+    public bool isAttracted = false;
     public Transform dustSpawnPoint;
     public GameObject DustParticles;
     TopDownMovement2D mover;
     Animator animator;
     PlayerLandSMB plb;
-    
+    Rigidbody2D rb;
     float scaleX;
     int obstacleLayer;
-
+    TvForce tvForce;
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         mover = GetComponent<TopDownMovement2D>();    
         animator = GetComponent<Animator>();
         obstacleLayer = LayerMask.NameToLayer("Obstacle");
+
     }
 
     void Start(){
@@ -43,24 +46,18 @@ public class Player : MonoBehaviour
         handleInput();
         // play footstep sound
         float t = Time.time;
-        // if it's time for another footstep and the player is jumping
+        // if it's time for another footstep and the player is not jumping or being attracted
         if(mover.moving && t - footStepTime > footstepDelay && !isJumping){
             footStepTime = t;
             GM.instance.audioManager.PlaySound("Step");
-            // spawn dust
             spawnDust();
         }
+        
+        if(isAttracted)
+            attract();
     }
 
     void handleInput(){
-        // basic motion, movement is frozen while jumping
-        if(!isJumping){
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            var motion = new Vector2(horizontal, vertical);
-            mover.Move(motion);
-        }
-
         // face player towards mouse
         var localScale = spriteRenderer.transform.localScale;
         if(remote.angle > 90 || remote.angle < -90){
@@ -74,7 +71,7 @@ public class Player : MonoBehaviour
             GM.instance.audioManager.PlaySound("Whoosh");
         }
         spriteRenderer.transform.localScale = localScale;
-        animator.SetBool("moving", mover.moving);
+        
         
         // pause and unpause
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
@@ -86,6 +83,22 @@ public class Player : MonoBehaviour
             remote.PressPause();
         }
 
+        if(isAttracted) return;
+
+        /*
+            You can't do anything below here if the player is being
+            attracted (by a tv or whatever else I code in)
+        */
+
+        // basic motion, movement is frozen while jumping
+        if(!isJumping && !isAttracted){
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            var motion = new Vector2(horizontal, vertical);
+            mover.Move(motion);
+        }
+        animator.SetBool("moving", mover.moving);
+        
         // player can only jump while running, also you can't jump while jumping
         if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftShift)) 
             && mover.moving && !isJumping){
@@ -119,5 +132,25 @@ public class Player : MonoBehaviour
 
         // spawn dust
         spawnDust();
+    }
+
+    public void BeginAttract(TvForce tvForce){
+        isAttracted = true;
+        mover.allowMovement = false;
+        mover.Move(new Vector2(0,0));
+        animator.SetBool("moving", false);
+        this.tvForce = tvForce;
+        attractedIndicator.SetActive(true);
+    }
+
+    void attract(){
+        Vector2 dir = tvForce.transform.position - transform.position;
+        rb.velocity = dir * tvForce.attractSpeed * Time.deltaTime;
+    }
+
+    public void StopAttract(){
+        tvForce = null;
+        isAttracted = false;
+        attractedIndicator.SetActive(false);
     }
 }

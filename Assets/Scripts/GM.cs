@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using BasicCamera;
 using BasicAudio;
-using BasicDialog;
 
 [RequireComponent(typeof(AudioManager))]
-[RequireComponent(typeof(DialogManager))]
 [RequireComponent(typeof(CameraShake))]
 public class GM : MonoBehaviour
 {
@@ -19,19 +17,15 @@ public class GM : MonoBehaviour
 
     public AudioSource levelBgMusic;
 
-
-    public int currentLevel { get; private set; } = 0;
     public CameraShake cameraShake { get; private set; }
     public AudioManager audioManager { get; private set; }
 
-    public DialogManager dialogManager { get; private set; }
     public bool paused { get; private set; }
 
     void Awake(){
         instance = this;
         audioManager = GetComponent<AudioManager>();
         cameraShake = GetComponent<CameraShake>();
-        dialogManager = GetComponent<DialogManager>();
     }
 
     void OnDestroy() {
@@ -39,8 +33,7 @@ public class GM : MonoBehaviour
     }
 
     void GoToNextLevel(){
-        currentLevel ++;
-        var levelSceneNum = INIT_GAME_SCENE + currentLevel;
+        var levelSceneNum = SceneManager.GetActiveScene().buildIndex + 1;
         if(levelSceneNum < SceneManager.sceneCount){
             SceneManager.LoadScene(levelSceneNum, LoadSceneMode.Single);
         }
