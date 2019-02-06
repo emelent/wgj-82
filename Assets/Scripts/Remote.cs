@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Remote : MonoBehaviour
 {
 
+    public TextMeshProUGUI clickText;
     public float rotationOffset = 0f;
     public float range = 3f;
+    public int numClicks = 5;
     public Transform firePoint;
 
     public LayerMask whatToHit;
@@ -17,6 +20,7 @@ public class Remote : MonoBehaviour
 
     void Start() {
         animator = GetComponent<Animator>();    
+        clickText.text = "Clicks " + numClicks;
     }
 	void Update () {
 		Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition)  - transform.position;
@@ -28,9 +32,14 @@ public class Remote : MonoBehaviour
 	}
 
     public void Click(){
+        if(numClicks < 1){
+            GM.instance.audioManager.PlaySound("EmptyClick");
+            return;
+        }
+        numClicks --;
         animator.Play("Click");
         GM.instance.audioManager.PlaySound("RemoteClick");
-
+        clickText.text = "Clicks " + numClicks;
         // Raycast remote range
 		Vector2 firePos = firePoint.position;
 		Vector2 dir = (firePos - (Vector2) transform.position).normalized;

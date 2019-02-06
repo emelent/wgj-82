@@ -91,28 +91,28 @@ MonoBehaviour:
     randomPitch: 0.086
   - name: Collect
     clip: {fileID: 8300000, guid: 5192dbd7c41064d2ea14affb31865d55, type: 3}
-    volume: 0.221
+    volume: 0.427
     pitch: 0.926
     randomVolume: 0.126
     randomPitch: 0.482
-  - name: 
+  - name: PlayerDeath1
+    clip: {fileID: 8300000, guid: da200866219314fa6936bf198590be53, type: 3}
+    volume: 0.125
+    pitch: 1.046
+    randomVolume: 0.049
+    randomPitch: 0.313
+  - name: PlayerDeath2
     clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    randomVolume: 0
-    randomPitch: 0
+    volume: 0.184
+    pitch: 1
+    randomVolume: 0.043
+    randomPitch: 0.28
+  - name: EmptyClick
+    clip: {fileID: 8300000, guid: 3a643056b32e34bd99784b520edfce12, type: 3}
+    volume: 0.204
+    pitch: 1.02
+    randomVolume: 0.069
+    randomPitch: 0.194
   - name: 
     clip: {fileID: 0}
     volume: 0

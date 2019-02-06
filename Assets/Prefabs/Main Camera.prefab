@@ -44,7 +44,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -60,7 +60,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.67
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -112,15 +112,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b1a4ebc8df4d4d85aba1ff0eabc74a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2885a9e2a3351486c9f996d4544f8226, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 54
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

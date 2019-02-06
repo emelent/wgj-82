@@ -7,6 +7,8 @@ public class TvForce : MonoBehaviour
     public bool isOn { get; protected set; } = false;
     public float attractSpeed = 300f;
 
+    [Range(0.1f, 1f)]
+    public float tickRate = 0.5f;
     public List<Sprite> sprites;
 
     public SpriteRenderer spriteRenderer;
@@ -52,6 +54,10 @@ public class TvForce : MonoBehaviour
             player = null;
         }
         
+        // nudge the tv so the trigger stay 
+        // can pick up entries that were there
+        // when the tv was off and are now in inactive
+        this.transform.Translate(0.001f, 0f, 0f);
         // update sprite based on on state
         int index = (isOn)? 1: 0;
         indicator.enabled = isOn;

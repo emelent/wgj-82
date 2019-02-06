@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BasicMotion;
+using TMPro;
 
 [RequireComponent(typeof(TopDownMovement2D))]
 public class Player : MonoBehaviour
@@ -12,15 +13,22 @@ public class Player : MonoBehaviour
     
     public float footstepDelay = 0.3f;
     float footStepTime = 0f;
-
+    public int time = 120;
+    
+    public float tickRate = 1f;
+    float tickTime = 0f;
+    public TextMeshProUGUI timeText;
     public bool isJumping { get; private set; } = false;
     public bool isAttracted = false;
+    public bool hasKey = false;
     public Transform dustSpawnPoint;
     public GameObject DustParticles;
     TopDownMovement2D mover;
     Animator animator;
     PlayerLandSMB plb;
     Rigidbody2D rb;
+
+    BoxCollider2D coll2d;
     float scaleX;
     int obstacleLayer;
     TvForce tvForce;
@@ -29,8 +37,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mover = GetComponent<TopDownMovement2D>();    
         animator = GetComponent<Animator>();
+        coll2d = GetComponent<BoxCollider2D>();
         obstacleLayer = LayerMask.NameToLayer("Obstacle");
-
     }
 
     void Start(){
@@ -38,6 +46,7 @@ public class Player : MonoBehaviour
         plb = animator.GetBehaviour<PlayerLandSMB>();
         plb.player = this as Player;
         scaleX = spriteRenderer.transform.localScale.x;
+        timeText.text = time.ToString();
     }
     // Update is called once per frame
     void Update()
@@ -51,7 +60,16 @@ public class Player : MonoBehaviour
             GM.instance.audioManager.PlaySound("Step");
             spawnDust();
         }
-        
+
+        if (t - tickTime > tickRate){
+            time -= 1;
+            tickTime = t;
+            timeText.text = time.ToString();
+        }
+
+        if(time <= 0){
+            GM.instance.RestartLevel();
+        }
         if(isAttracted)
             attract();
     }
@@ -73,8 +91,19 @@ public class Player : MonoBehaviour
         
         
         // pause and unpause
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
-            GM.instance.TogglePause();
+        // if(Input.GetKeyDown(KeyCode.P)){
+        //     GM.instance.TogglePause();
+        // }
+
+        // menu
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            GM.instance.GoToMenu();
+        }
+
+
+        // restart
+        if(Input.GetKeyDown(KeyCode.R)){
+            GM.instance.RestartLevel();
         }
 
         // Remote action button
@@ -139,6 +168,7 @@ public class Player : MonoBehaviour
         mover.Move(new Vector2(0,0));
         animator.SetBool("moving", false);
         this.tvForce = tvForce;
+        tickRate = tvForce.tickRate;
     }
 
     void attract(){
@@ -152,5 +182,13 @@ public class Player : MonoBehaviour
         isAttracted = false;
         mover.allowMovement = true;
         rb.velocity = Vector2.zero;
+        tickRate = 1f;
+    }
+
+    public void Die(){
+        mover.Move(Vector2.zero);
+        mover.allowMovement = false;
+        rb.velocity = Vector2.zero;
+        animator.Play("Die");
     }
 }
