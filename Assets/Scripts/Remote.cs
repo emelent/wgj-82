@@ -6,7 +6,11 @@ public class Remote : MonoBehaviour
 {
 
     public float rotationOffset = 0f;
-    public RemoteReceiver receiver;
+    public float range = 3f;
+    public Transform firePoint;
+
+    public LayerMask whatToHit;
+
     Animator animator;
 
     public float angle { get; protected set; }
@@ -23,27 +27,21 @@ public class Remote : MonoBehaviour
 		transform.rotation = Quaternion.Euler(0f, 0f, angle);	
 	}
 
-    protected void remoteClick(){
+    public void Click(){
         animator.Play("Click");
         GM.instance.audioManager.PlaySound("RemoteClick");
-    }
-    public void PressPause(){
-        print("Remote: Pause");
-        remoteClick();
-    }
-    
-    public void PressPowerOff(){
-        print("Remote: Power off");
-        remoteClick();
-    }
-    
-    public void PressChannelUp(){
-        receiver.ChannelUp();
-    }
 
-    public void PressChannelDown(){
-        receiver.ChannelDown();
-    }
+        // Raycast remote range
+		Vector2 firePos = firePoint.position;
+		Vector2 dir = (firePos - (Vector2) transform.position).normalized;
+		RaycastHit2D hit = Physics2D.Raycast(firePos, dir, range, whatToHit);
 
+		if(hit.collider){
+			Vector2 normal = hit.normal;
+			Debug.DrawLine(firePos, hit.point, Color.red);
+			TvForce tvForce = hit.collider.GetComponentInParent<TvForce>();
+            tvForce.ToggleTvForce(!tvForce.isOn);
+		}
+    }
     
 }

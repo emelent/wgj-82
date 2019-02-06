@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
 
     public SpriteRenderer spriteRenderer;
-    public GameObject attractedIndicator;
     public Remote remote;
     
     public float footstepDelay = 0.3f;
@@ -80,7 +79,7 @@ public class Player : MonoBehaviour
 
         // Remote action button
         if(Input.GetMouseButtonDown(0)){
-            remote.PressPause();
+            remote.Click();
         }
 
         if(isAttracted) return;
@@ -140,7 +139,6 @@ public class Player : MonoBehaviour
         mover.Move(new Vector2(0,0));
         animator.SetBool("moving", false);
         this.tvForce = tvForce;
-        attractedIndicator.SetActive(true);
     }
 
     void attract(){
@@ -149,8 +147,10 @@ public class Player : MonoBehaviour
     }
 
     public void StopAttract(){
+        print("Stopping attract");
         tvForce = null;
         isAttracted = false;
-        attractedIndicator.SetActive(false);
+        mover.allowMovement = true;
+        rb.velocity = Vector2.zero;
     }
 }
