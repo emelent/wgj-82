@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 6156675813863560511, guid: c6089e682491843c4b539d8dac4325ad,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -173.9
+      value: -199.8
       objectReference: {fileID: 0}
     - target: {fileID: 6156675813863560511, guid: c6089e682491843c4b539d8dac4325ad,
         type: 3}
@@ -329,7 +329,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.22745098, g: 0.21176471, b: 0.2627451, a: 0}
+  m_BackGroundColor: {r: 0.16078432, g: 0.14509805, b: 0.19215687, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -546,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -217.77
+      value: -234.24
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}

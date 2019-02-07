@@ -13,7 +13,8 @@ public class GM : MonoBehaviour
 
     public static int MENU_SCENE { get; private set; } = 0;
     public static int CONTROLS_SCENE { get; private set; } = 1;
-    public static int INIT_GAME_SCENE { get; private set; } = 2;
+    public static int CREDITS_SCENE { get; private set; } = 2;
+    public static int INIT_GAME_SCENE { get; private set; } = 3;
     
     public AudioSource levelBgMusic;
 
@@ -55,7 +56,6 @@ public class GM : MonoBehaviour
     public void RestartGame(){
         SceneManager.LoadScene(INIT_GAME_SCENE, LoadSceneMode.Single);
     }
-
 
     public void GoToMenu(){
         SceneManager.LoadScene(MENU_SCENE, LoadSceneMode.Single);
