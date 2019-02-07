@@ -36,7 +36,6 @@ public class Remote : MonoBehaviour
             GM.instance.audioManager.PlaySound("EmptyClick");
             return;
         }
-        numClicks --;
         animator.Play("Click");
         GM.instance.audioManager.PlaySound("RemoteClick");
         clickText.text = "Clicks " + numClicks;
@@ -46,6 +45,7 @@ public class Remote : MonoBehaviour
 		RaycastHit2D hit = Physics2D.Raycast(firePos, dir, range, whatToHit);
 
 		if(hit.collider){
+            numClicks --;
 			Vector2 normal = hit.normal;
 			Debug.DrawLine(firePos, hit.point, Color.red);
 			TvForce tvForce = hit.collider.GetComponentInParent<TvForce>();
