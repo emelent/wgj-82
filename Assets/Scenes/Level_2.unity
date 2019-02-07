@@ -182,9 +182,7 @@ PrefabInstance:
     - target: {fileID: 7873136321234884895, guid: 3b5c605795f0c4b8a9eec185437adf09,
         type: 3}
       propertyPath: hint
-      value: 'Use WASD to move
-
-        Oh, and take your time... hehehe'
+      value: Use WASD to move
       objectReference: {fileID: 0}
     - target: {fileID: 7873136321234884895, guid: 3b5c605795f0c4b8a9eec185437adf09,
         type: 3}
@@ -3364,7 +3362,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792442869}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -3469,12 +3467,12 @@ PrefabInstance:
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -30.54
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
@@ -3484,22 +3482,22 @@ PrefabInstance:
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
-        type: 3}
-      propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
-      propertyPath: m_AnchorMax.y
+      propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621061, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
@@ -3514,7 +3512,7 @@ PrefabInstance:
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_text
-      value: 
+      value: USE WASD TO MOVE
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
@@ -3529,27 +3527,27 @@ PrefabInstance:
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
@@ -3579,12 +3577,12 @@ PrefabInstance:
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_fontSize
-      value: 20.5
+      value: 23.39
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 20.5
+      value: 23.39
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
@@ -3863,7 +3861,7 @@ PrefabInstance:
     - target: {fileID: 9154688202385955171, guid: 53acee34e31264e639177150161c7997,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 10.52
       objectReference: {fileID: 0}
     - target: {fileID: 9154688202385955171, guid: 53acee34e31264e639177150161c7997,
         type: 3}
@@ -4002,16 +4000,6 @@ PrefabInstance:
     - target: {fileID: 1003282451410931709, guid: 70e7587296a964001930726d2ba92768,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003282450077206252, guid: 70e7587296a964001930726d2ba92768,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003282450077206242, guid: 70e7587296a964001930726d2ba92768,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

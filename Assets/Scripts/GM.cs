@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using BasicCamera;
 using BasicAudio;
 
@@ -15,7 +16,8 @@ public class GM : MonoBehaviour
     public static int CONTROLS_SCENE { get; private set; } = 1;
     public static int CREDITS_SCENE { get; private set; } = 2;
     public static int INIT_GAME_SCENE { get; private set; } = 3;
-    
+
+    public Image panel;
     public AudioSource levelBgMusic;
 
     public CameraShake cameraShake { get; private set; }
@@ -39,8 +41,7 @@ public class GM : MonoBehaviour
         if(levelSceneNum < SceneManager.sceneCountInBuildSettings){
             SceneManager.LoadScene(levelSceneNum, LoadSceneMode.Single);
         } else {
-            print("Invalid scene index " + levelSceneNum);
-            print("Scene Count " + SceneManager.sceneCount);
+            SceneManager.LoadScene(CREDITS_SCENE, LoadSceneMode.Single);
         }
     }
 
@@ -87,6 +88,11 @@ public class GM : MonoBehaviour
             print("bg music isPlaying => " + levelBgMusic.isPlaying);
             // unpause time
         }
+    }
+
+    public void TogglePanel(bool value){
+        if(panel != null)
+            panel.enabled = value;
     }
 
 }

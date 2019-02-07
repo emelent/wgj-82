@@ -17,9 +17,10 @@ public class Remote : MonoBehaviour
     Animator animator;
 
     public float angle { get; protected set; }
-
+    SpriteRenderer spriteRenderer;
     void Start() {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();   
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
         clickText.text = "Clicks " + numClicks;
     }
 	void Update () {
@@ -32,6 +33,9 @@ public class Remote : MonoBehaviour
 	}
 
     public void Click(){
+        if(!spriteRenderer.enabled) 
+            return;
+            
         if(numClicks < 1){
             GM.instance.audioManager.PlaySound("EmptyClick");
             return;
@@ -52,5 +56,6 @@ public class Remote : MonoBehaviour
             tvForce.ToggleTvForce(!tvForce.isOn);
 		}
     }
+    
     
 }

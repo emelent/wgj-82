@@ -17,10 +17,12 @@ public class Hint : CollectableItem
     public override void ActivateEffect()
     {
         text.text = hint;
+        GM.instance.TogglePanel(true);
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == targetTag)
             text.text = "";
+        GM.instance.TogglePanel(false);
     }
 }
