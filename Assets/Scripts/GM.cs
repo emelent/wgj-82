@@ -32,6 +32,9 @@ public class GM : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
+    private void Start() {
+        TogglePanel(false);
+    }
     void OnDestroy() {
         instance = null;    
     }

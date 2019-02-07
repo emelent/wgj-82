@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         }
 
         if(time <= 0){
+            Die();
             GM.instance.RestartLevel();
         }
         if(isAttracted)
@@ -129,7 +130,7 @@ public class Player : MonoBehaviour
         
         // player can only jump while running, also you can't jump while jumping
         if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftShift)) 
-            && mover.moving && !isJumping){
+            && !isJumping){
             print("Jumping");
             isJumping = true;
             animator.SetBool("jumping", isJumping);
