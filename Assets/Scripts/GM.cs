@@ -52,6 +52,7 @@ public class GM : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
+    
     public void RestartLevel(){
         audioManager.PlaySound("ChannelChange");
         StartCoroutine(restartLevel());

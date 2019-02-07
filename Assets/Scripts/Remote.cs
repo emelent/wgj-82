@@ -11,6 +11,7 @@ public class Remote : MonoBehaviour
     public float range = 3f;
     public int numClicks = 5;
     public Transform firePoint;
+    public float maxReceptionDist = 1.5f;
 
     public LayerMask whatToHit;
 
@@ -35,7 +36,7 @@ public class Remote : MonoBehaviour
     public void Click(){
         if(!spriteRenderer.enabled) 
             return;
-            
+
         if(numClicks < 1){
             GM.instance.audioManager.PlaySound("EmptyClick");
             return;
@@ -47,14 +48,19 @@ public class Remote : MonoBehaviour
 		Vector2 firePos = firePoint.position;
 		Vector2 dir = (firePos - (Vector2) transform.position).normalized;
 		RaycastHit2D hit = Physics2D.Raycast(firePos, dir, range, whatToHit);
-
+        Vector2 dist = (firePos - (Vector2) transform.position);
+        print("magnitude " + dist.magnitude);
 		if(hit.collider){
             numClicks --;
-			Vector2 normal = hit.normal;
-			Debug.DrawLine(firePos, hit.point, Color.red);
 			TvForce tvForce = hit.collider.GetComponentInParent<TvForce>();
             tvForce.ToggleTvForce(!tvForce.isOn);
-		}
+		} else if (dist.magnitude < maxReceptionDist){
+            numClicks --;
+            var tvForce = GetComponentInParent<Player>().tvForce;
+            if(tvForce){
+                tvForce.ToggleTvForce(!tvForce.isOn);
+            } 
+        }
     }
     
     

@@ -115,9 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickText: {fileID: 0}
   rotationOffset: 0
-  range: 3.2
-  numClicks: 5
+  range: 5
+  numClicks: 100
   firePoint: {fileID: 5250993601394709889}
+  maxReceptionDist: 1.5
   whatToHit:
     serializedVersion: 2
     m_Bits: 4096
@@ -556,7 +557,7 @@ SpriteRenderer:
   m_Size: {x: 0.72, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5702260034576175499

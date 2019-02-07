@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     BoxCollider2D coll2d;
     float scaleX;
     int obstacleLayer;
-    TvForce tvForce;
+    public TvForce tvForce { get; protected set; }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -187,6 +187,8 @@ public class Player : MonoBehaviour
     }
 
     public void Die(){
+        int index = Random.Range(1, 2);
+        GM.instance.audioManager.PlaySound("PlayerDeath" + index.ToString());
         mover.Move(Vector2.zero);
         mover.allowMovement = false;
         rb.velocity = Vector2.zero;
