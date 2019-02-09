@@ -609,22 +609,22 @@ PrefabInstance:
 
         RESTART LEVEL - R
 
-        MENU - Escape'
+        EXIT TO MENU - Tab'
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 95
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 20
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 20
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2745164845237621062, guid: 5f154f4788c85420e8782537cb565d28,
         type: 3}

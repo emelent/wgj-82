@@ -28,9 +28,11 @@ public class Player : MonoBehaviour
     PlayerLandSMB plb;
     Rigidbody2D rb;
 
+    public bool isDead { get; private set; } = false;
     BoxCollider2D coll2d;
     float scaleX;
     int obstacleLayer;
+    int tvLayer;
     public TvForce tvForce { get; protected set; }
     void Awake()
     {
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         coll2d = GetComponent<BoxCollider2D>();
         obstacleLayer = LayerMask.NameToLayer("Obstacle");
+        tvLayer = LayerMask.NameToLayer("TV");
     }
 
     void Start(){
@@ -65,6 +68,8 @@ public class Player : MonoBehaviour
             time -= 1;
             tickTime = t;
             timeText.text = time.ToString();
+            if(time < 25)
+                GM.instance.audioManager.PlaySound("Beep");
         }
 
         if(time <= 0){
@@ -97,7 +102,7 @@ public class Player : MonoBehaviour
         // }
 
         // menu
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Tab)){
             GM.instance.GoToMenu();
         }
 
@@ -106,6 +111,8 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             GM.instance.RestartLevel();
         }
+
+        if(isDead) return;
 
         // Remote action button
         if(Input.GetMouseButtonDown(0)){
@@ -139,7 +146,7 @@ public class Player : MonoBehaviour
 
             // disable collisions with objects only
             Physics2D.IgnoreLayerCollision(gameObject.layer, obstacleLayer);
-
+            Physics2D.IgnoreLayerCollision(gameObject.layer, tvLayer);
             // spawn dust
             spawnDust();
         }
@@ -158,6 +165,7 @@ public class Player : MonoBehaviour
 
         // enable collisions
         Physics2D.IgnoreLayerCollision(gameObject.layer, obstacleLayer, false);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, tvLayer, false);
 
         // spawn dust
         spawnDust();
@@ -187,11 +195,13 @@ public class Player : MonoBehaviour
     }
 
     public void Die(){
+        isDead = true;
         int index = Random.Range(1, 2);
         GM.instance.audioManager.PlaySound("PlayerDeath" + index.ToString());
         mover.Move(Vector2.zero);
         mover.allowMovement = false;
         rb.velocity = Vector2.zero;
+        animator.SetBool("moving", false);
         animator.Play("Die");
     }
 }

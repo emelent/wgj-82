@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3853712021984783086}
   - component: {fileID: 3853712021984783081}
   - component: {fileID: 3853712021984783080}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attractSpeed: 300
+  tickRate: 0.388
   sprites:
   - {fileID: 21300008, guid: a68936513bc3f41b59291bd89a10ef7a, type: 3}
   - {fileID: 21300010, guid: a68936513bc3f41b59291bd89a10ef7a, type: 3}
@@ -144,8 +145,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -173301867
-  m_SortingLayer: 3
+  m_SortingLayerID: -1848425771
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: a68936513bc3f41b59291bd89a10ef7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3853712022392579477}
   - component: {fileID: 3853712022392579482}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

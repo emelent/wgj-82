@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TvForce : MonoBehaviour
 {
-    public bool isOn { get; protected set; } = false;
+    public bool isOn = false;
     public float attractSpeed = 300f;
 
     [Range(0.1f, 1f)]

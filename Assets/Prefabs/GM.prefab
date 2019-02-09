@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5242b081060574d869ad04493a7e1a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 0}
   levelBgMusic: {fileID: 0}
 --- !u!114 &6416603877100226700
 MonoBehaviour:
@@ -113,10 +114,10 @@ MonoBehaviour:
     pitch: 1.02
     randomVolume: 0.069
     randomPitch: 0.194
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Beep
+    clip: {fileID: 8300000, guid: 071171588e6ba4129996b39e6ac7df7e, type: 3}
+    volume: 0.034
+    pitch: 0.7
     randomVolume: 0
     randomPitch: 0
 --- !u!114 &6416603877100226691

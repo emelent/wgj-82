@@ -51,6 +51,7 @@ public class Remote : MonoBehaviour
         Vector2 dist = (firePos - (Vector2) transform.position);
         print("magnitude " + dist.magnitude);
 		if(hit.collider){
+            print("Hit collider");
             numClicks --;
 			TvForce tvForce = hit.collider.GetComponentInParent<TvForce>();
             tvForce.ToggleTvForce(!tvForce.isOn);

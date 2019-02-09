@@ -6,8 +6,12 @@ using BasicMotion;
 public class DeathZone : CollectableItem
 {
     
+    public bool ignoreIfAttracted = true;
     public override void ActivateEffect()
     {
+        if(ignoreIfAttracted && GM.instance.player.isAttracted)
+            return;
+
         GM.instance.player.Die();
         StartCoroutine(restart());
     }
